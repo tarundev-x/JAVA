@@ -1,0 +1,5 @@
+---// length can be used for int[], double[], String[] 
+---// to know the length of the arrays.
+
+// length() can be used for String, StringBuilder, etc 
+// String class related Objects to know the length of the String
