@@ -7,84 +7,58 @@
 // Auxiliary Space: O(1)
 // import java.io.*;//
 
+
+import java.io.*;
+
 class GFG {
-    static void merge(int left,int middle,int right,int arr[])
+    static int partition(int arr[],int lb,int ub)
     {
-        int l=middle-left+1;
-        int r=right-middle;
+        int pivot=arr[lb];//{4,6,2,5,7,9,1,3};//{4,3,2,5,7,9,1,6}4
         
-        int larr[]=new int[l];
-        int rarr[]=new int[r];
-        
-        
-        
-        for(int i=0;i<l;i++)
+        int start=lb;
+        int end=ub;
+        while(start<end)
         {
-            larr[i]=arr[left+i];
-        }
-        
-        for(int j=0;j<r;j++)
-        {
-            rarr[j]=arr[middle+1+j];
-        }
-        
-       int i=0;
-       int j=0;
-        int k=left;
-        while(i<l&&j<r)
-        {
-            if(larr[i]<=rarr[j])
+            while(arr[start]<=pivot && start<end)
             {
-                arr[k]=larr[i];
-                i++;
+                start++;
             }
-            else{
-                arr[k]=rarr[j];
-                j++;
+            while(arr[end]>pivot)
+            {
+                end--;
             }
-            k++;
+            if(start<end)
+            {
+                int temp=arr[start];
+                arr[start]=arr[end];
+                arr[end]=temp;
+            }
         }
-        while(i<l)
-        {
-            arr[k]=larr[i];
-            k++;
-            i++;
-            
-        }
-        while(j<r)
-        {
-            arr[k]=rarr[j];
-            k++;
-            j++;
-        }
-    }
-    static void display(int arr[])
-    {
-        for(int x:arr)
-        {
-            System.out.println(x);
-        }
-    }
-    static void mergesort(int left,int right,int arr[] )
-    {
-        int middle;
-        if(left<right)
-        {
-            middle=(left+right)/2;
-            
-            mergesort(left,middle,arr);
-            mergesort(middle+1,right,arr);
-            
-            merge(left,middle,right,arr);
-            
-            
-        }
+         int temp=arr[lb];
+        arr[lb]=arr[end];
+        arr[end]=temp;
+     return end;
     }
     
+    static void quicksort(int arr[],int low,int high)
+    {
+       if(low<high)
+       {
+           int part=partition(arr,low,high);
+           //seperately sorting the element before and after partition
+           quicksort(arr,low,part-1);
+           quicksort(arr,part+1,high);
+       }
+    }
 	public static void main (String[] args) {
-		int arr[]={5,1,8,3,9,2};
-		int n=arr.length;
-		GFG.mergesort(0,n-1,arr);
-		GFG.display(arr);
+	int arr[]={4,6,2,5,7,9,1,3};
+	int n=arr.length;
+	
+	quicksort(arr,0,n-1);
+	
+	for(int a:arr)
+	{
+	    System.out.println(a);
+	}
 	}
 }
