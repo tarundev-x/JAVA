@@ -1,4 +1,4 @@
-/*4. implement the calculator with com.girmiti.Calculater.Addition, Subtraction, Multiplication, Division and Modules.
+/*4. implement the calculator with .Addition, Subtraction, Multiplication, Division and Modules.
 (use switch case to choose operations like com.girmiti.Calculater.Addition, Subtraction, Multiplicaton etc,
 and use Scanner class to take input.)*/
 package com.girmiti.Calculater;
