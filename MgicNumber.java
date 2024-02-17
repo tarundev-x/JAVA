@@ -1,8 +1,6 @@
 // Write a Java Program to check if any number is a magic
 // number or not. A number is said to be a magic number if
-// aȅ er doing sum of digits in each step and inturn doing sum
-// of digits of that sum, the ultimate result (when there is
-// only one digit leȅ ) is 1.
+//  doing sum of digits is  equal to 1
 // 164 ==1+6+4 
 // n-n/10
 
